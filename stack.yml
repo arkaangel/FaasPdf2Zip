@@ -3,7 +3,7 @@ provider:
   name: openfaas
   gateway: https://faas.arkaangel.com
 #  gateway: http://faas.fairu.local
-#  gateway: http://127.0.0.1:8080
+#  gateway: http://127.0.0.1:8080/asdfasdf
 functions:
   faas-pdf2zip:
     lang: dockerfile

@@ -1,21 +1,2 @@
 #!/bin/sh
-
-INPUT=$@
-FILE_NAME=$(echo "$INPUT" | rev | cut -d'/' -f 1 | rev)
-BASE_NAME=$(basename "$FILE_NAME" .pdf)
-
-curl -s $INPUT --output $FILE_NAME || { echo "Error downloading file: $INPUT" ; exit 1; }
-
-rm -rf $BASE_NAME
-mkdir $BASE_NAME
-
-pdftoppm -png -q $FILE_NAME $BASE_NAME/${BASE_NAME}_page
-
-zip -q0 $BASE_NAME.zip $BASE_NAME
-rm -rf $FILE_NAME
-
-
-#pasos:
-#1-comprobar que la url termine en .pdf, sino dar error
-#2-picar la url por '/' y tomar el ultimo eliemento
-#3-tomar el nombre del archivo sin el .pdf para retornar el zip con el mismo nombre del pdf
+cat $@
